@@ -15,7 +15,7 @@ import javax.persistence.*;
 @Table(name = "customer_info")
 public class Customer {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // this annotation is used for generate primary key automatically
     @Column(name ="customer_id" )
     private int customerId;
     @Column(name = "customer_name")

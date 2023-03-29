@@ -16,7 +16,7 @@ import javax.persistence.*;
 @Table(name = "booking_info")
 public class Booking {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //this is used to generate primary key auromatically
     @Column(name = "booking_id")
     private int BookingId;
     @Column(name = "location_id")

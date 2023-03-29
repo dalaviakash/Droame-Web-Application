@@ -20,12 +20,15 @@ public class BookingController {
     @Autowired
     private BookingServices services;
 
+    ////this method is created to add booking data
     @GetMapping("/bookingform")
     public String addBooking(Model model){
         model.addAttribute("booking",new Booking());
         return "bookingform";
 
     }
+
+    //this method is created to insert data
      @PostMapping("/insertbooking")
     public String addBookingDetails(Booking b){
         services.addBookingDetails(b);
@@ -33,6 +36,7 @@ public class BookingController {
 
     }
 
+    //this method is created to get all booked data
     @GetMapping("/booked")
     public String getAllBookingInfo(Model model){
         model.addAttribute("record",services.getAllBookingInfo());
@@ -40,13 +44,16 @@ public class BookingController {
         return "bookinglist";
     }
 
+    //this method is created to get data for update
     @GetMapping("/updatebooking/{id}")
     public String showupdateBooking(@PathVariable(value = "id")int id, Model model){
 
         model.addAttribute("record",services.showupdateBooking(id));
         return "updatebooking";
     }
-    @PostMapping("/modifybooking/{id}")
+
+    //this method is created to updated data store
+    @PostMapping("/modifybooking/{id}") //pathvariable anotation is used to pass id on url
     public String modifyBooking(@PathVariable int id, @ModelAttribute("record") Booking b, Model model){
         Booking booking=services.showupdateBooking(id);
         booking.setBookingId(id);
@@ -56,6 +63,8 @@ public class BookingController {
         services.modifyBooking(booking);
         return "redirect:/booked";
     }
+
+    //this method is created to delete the data
     @GetMapping("/deletebooking/{id}")
     public String deleteBooking(@PathVariable(value = "id")int id){
         services.deleteBooking(id);

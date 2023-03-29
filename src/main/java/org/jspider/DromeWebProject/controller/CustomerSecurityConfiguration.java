@@ -15,7 +15,7 @@ public class CustomerSecurityConfiguration extends WebSecurityConfigurerAdapter 
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         User.UserBuilder user=User.withDefaultPasswordEncoder();
         auth.inMemoryAuthentication()
-                .withUser((user.username("Drome").password("Drome@123").roles("ADMIN")));
+                .withUser((user.username("Drome").password("Drome@123").roles("ADMIN")));//this is user name and password for admin
 
 
     }
@@ -26,7 +26,7 @@ public class CustomerSecurityConfiguration extends WebSecurityConfigurerAdapter 
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests()
 
-                .antMatchers("/admin").hasRole("ADMIN")
+                .antMatchers("/admin").hasRole("ADMIN")//only access to giv admin
 
                 .and().formLogin();
 
